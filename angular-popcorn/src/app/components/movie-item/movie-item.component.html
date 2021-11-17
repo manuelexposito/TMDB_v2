@@ -1,17 +1,21 @@
 <mat-card class="movie-card">
     <mat-card-content>
-        <circle-progress class="circle-position"
-        [percent]="(movieInput.vote_average*10)" [radius]="20" [outerStrokeWidth]="4" [innerStrokeWidth]="3" [showInnerStroke]=false
-            outerStrokeColor="#3381C6" titleColor="white" [animation]="true" [animationDuration]="300" backgroundColor="black" subtitle="">
-        </circle-progress>
-        <img [src]="getMovieImageUrl(movieInput)" height="200px" width="100%" style="border-radius: 5px;" />
+       
+        <div  class="movie-img">
+            <img [src]="getMovieImageUrl(movieInput)" height="200px" width="100%" style="border-radius: 5px;" />
+        </div>
+       
         <h2 class="movie-description"><strong>{{movieInput.title}}</strong></h2>
         <p class="movie-description">{{movieInput.overview}}</p>
+        <circle-progress class="circle-position"
+        [percent]="(movieInput.vote_average*10)" [radius]="20" [outerStrokeWidth]="4" [innerStrokeWidth]="3" [showInnerStroke]=false
+            outerStrokeColor="#3381C6" titleColor="white" [animation]="true" [animationDuration]="300" backgroundColor="black" >
+        </circle-progress>
     </mat-card-content>
     <mat-card-actions fxLayout="row" fxLayoutAlign="end end">
 
         <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-            <mat-icon>favorite</mat-icon>
+            <mat-icon>favorite_border</mat-icon>
         </button>
         <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
             <mat-icon>playlist_add</mat-icon>
