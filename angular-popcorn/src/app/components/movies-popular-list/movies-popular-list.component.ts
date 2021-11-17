@@ -11,10 +11,13 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class MoviesPopularListComponent implements OnInit {
   popularMovies: Movie[] = [];
 
+  token !: string;
+
   constructor(private moviesService: MoviesService, private authService : AuthService) { }
 
   ngOnInit(): void {
 
+   // this.authService.getRequestToken();
 
     this.moviesService.getPopularMovies().subscribe(popularMoviesResponse => {
       this.popularMovies = popularMoviesResponse.results;
@@ -22,3 +25,4 @@ export class MoviesPopularListComponent implements OnInit {
   }
 
 }
+
