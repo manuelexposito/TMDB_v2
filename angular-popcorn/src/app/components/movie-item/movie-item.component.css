@@ -3,11 +3,12 @@
      overflow: hidden;
      width: 100%;
     border-radius: 10px;
-    height: 100%;
+    height: 200px;
 }
 .movie-img img{
     object-fit: cover;
     transition: transform .5s ease;
+    height: 200px;
 }
 
 .movie-img img:hover{

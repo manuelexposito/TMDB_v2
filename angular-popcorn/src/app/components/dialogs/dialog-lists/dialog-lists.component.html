@@ -1,0 +1,12 @@
+<h1>{{data.name}}</h1>
+
+<div>
+    <mat-form-field class="example-full-width" appearance="fill" [(ngModel)]="nombreNuevaLista">
+        <mat-label>Nueva lista</mat-label>
+        <input matInput placeholder="Nueva lista" [value]=[nombreNuevaLista]>
+    </mat-form-field>
+    <button mat-button (click)="createNewList(nombreNuevaLista)"> Enviar </button>
+
+</div>
+
+<p>dialog-lists works!</p>

@@ -15,9 +15,9 @@
     <mat-card-actions fxLayout="row" fxLayoutAlign="end end">
 
         <button  routerLinkActive="router-link-active"  mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-           <a *ngIf="!isLoggedIn()" (click)="redirectWithToken()" > <mat-icon>favorite_border</mat-icon></a>
+           <a (click)="getRequestToken()" > <mat-icon>favorite_border</mat-icon></a>
         </button>
-        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <button (click)="openDialog()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
             <mat-icon>playlist_add</mat-icon>
         </button>
 

@@ -12,12 +12,15 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { DialogListsComponent } from './components/dialogs/dialog-lists/dialog-lists.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesPopularListComponent,
-    MovieItemComponent
+    MovieItemComponent,
+    DialogListsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MaterialImportsModule,
     HttpClientModule,
     FlexLayoutModule,
+    FormsModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,
