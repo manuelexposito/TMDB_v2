@@ -19,9 +19,9 @@ export class ListsService {
   }*/
 
 
-  getLists() : Observable<ListResponse>{
+  getLists(sessionId : string) : Observable<ListResponse>{
                                                                                                                                                                  //AQUÍ NECESITAMOS LA SESSION_ID
-    return this.http.get<ListResponse>(`${environment.apiBaseUrl}/account/{account_id}/lists?api_key=${environment.apiKey}&language=${environment.defaultLang}&page=1&session_id={{session_id}}`);
+    return this.http.get<ListResponse>(`${environment.apiBaseUrl}/account/{account_id}/lists?api_key=${environment.apiKey}&language=${environment.defaultLang}&page=1&session_id=${sessionId}`);
 
   }
 

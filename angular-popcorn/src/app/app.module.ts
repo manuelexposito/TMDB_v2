@@ -15,12 +15,17 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { DialogListsComponent } from './components/dialogs/dialog-lists/dialog-lists.component';
 import { FormsModule } from '@angular/forms';
 
+import { SessionComponent } from './shared/session/session.component';
+import { DialogLoginComponent } from './components/dialogs/dialog-fav/dialog-login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     MoviesPopularListComponent,
     MovieItemComponent,
-    DialogListsComponent
+    DialogListsComponent,
+    DialogLoginComponent,
+    SessionComponent
   ],
   imports: [
     BrowserModule,

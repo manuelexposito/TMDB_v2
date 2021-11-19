@@ -12,10 +12,12 @@ export class MoviesPopularListComponent implements OnInit {
   popularMovies: Movie[] = [];
 
   token !: string;
-
+  
   constructor(private moviesService: MoviesService, private authService : AuthService) { }
 
   ngOnInit(): void {
+
+
 
    // this.authService.getRequestToken();
 

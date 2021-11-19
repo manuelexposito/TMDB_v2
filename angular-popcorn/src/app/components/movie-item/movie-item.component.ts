@@ -5,6 +5,9 @@ import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogListsComponent } from '../dialogs/dialog-lists/dialog-lists.component';
 
+import { Router } from '@angular/router';
+import { DialogLoginComponent } from '../dialogs/dialog-fav/dialog-login.component';
+
 @Component({
   selector: 'app-movie-item',
   templateUrl: './movie-item.component.html',
@@ -13,12 +16,12 @@ import { DialogListsComponent } from '../dialogs/dialog-lists/dialog-lists.compo
 export class MovieItemComponent implements OnInit {
   @Input() movieInput!: Movie;
 
-  token !: string;
+ //token !: string;
 
-  constructor(private authService : AuthService, public dialog: MatDialog) { }
+  constructor(private authService : AuthService, public dialog: MatDialog, private router :Router) { }
 
   ///DIALOGO------------
-  openDialog(): void {
+  openDialogList(): void {
     const dialogRef = this.dialog.open(DialogListsComponent, {
       width: '650px',
       height: '300px',
@@ -27,6 +30,16 @@ export class MovieItemComponent implements OnInit {
 
    
   }
+
+  openDialogFav(): void {
+    const dialogRef = this.dialog.open(DialogLoginComponent, {
+      width: '650px',
+      height: '200px'
+    });
+
+   
+  }
+
   ///DIALOGO-------
 
   ngOnInit(): void {
@@ -38,22 +51,20 @@ export class MovieItemComponent implements OnInit {
     return `${environment.imageBaseUrl}${movie.poster_path}`;
   }
 
-  getRequestToken(){
 
 
-    this.authService.getRequestToken().subscribe(
-      r => {this.token = r.request_token                                        //?redirect_to=http://localhost:4200/approved
-        window.location.href=`https://www.themoviedb.org/authenticate/${this.token}`;}
-    )
-    
+  addFavorite(){
+
+    if(this.authService.isLoggedIn()){
+      //TODO Guardar el favorito de la película actual.
+      alert(this.authService.getSessionId());
+
+    } else{
+
+      this.openDialogFav();
+
+    }
+
   }
-
-
-
-  isLoggedIn(){
-
-    return this.authService.isLoggedIn()
-  }
-
 
 }
