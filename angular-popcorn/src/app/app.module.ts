@@ -16,7 +16,8 @@ import { DialogListsComponent } from './components/dialogs/dialog-lists/dialog-l
 import { FormsModule } from '@angular/forms';
 
 import { SessionComponent } from './shared/session/session.component';
-import { DialogLoginComponent } from './components/dialogs/dialog-fav/dialog-login.component';
+import { DialogLoginComponent } from './components/dialogs/dialog-login/dialog-login.component';
+import { ListSuccessSnackbarComponent } from './components/snackbar/list-success-snackbar/list-success-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DialogLoginComponent } from './components/dialogs/dialog-fav/dialog-log
     MovieItemComponent,
     DialogListsComponent,
     DialogLoginComponent,
-    SessionComponent
+    SessionComponent,
+    ListSuccessSnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { DialogLoginComponent } from './components/dialogs/dialog-fav/dialog-log
       showInnerStroke: false,
       showSubtitle:false,
       animationDuration: 300,
-      
+
     })
   ],
   providers: [],

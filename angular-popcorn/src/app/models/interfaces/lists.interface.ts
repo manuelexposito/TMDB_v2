@@ -15,3 +15,11 @@ export interface List {
     name:           string;
     poster_path:    null;
 }
+
+
+export interface AddListResponse {
+  success:        boolean;
+  status_code:    number;
+  status_message: string;
+  list_id:        number;
+}

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -8,20 +9,20 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SessionComponent implements OnInit {
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService, private router : Router) { }
 
   ngOnInit(): void {
 
-    //Crear el SessionId y setearlo. 
+    //Crear el SessionId y setearlo.
     //this.authService.createSessionId()
 
     this.authService.createSessionId().subscribe(
-
       //TODO Solucionar por qué no settea el nuevo ID
-      sessionId => this.authService.setSessionId(sessionId.session_id)
+      sessionId => { this.authService.setSessionId(sessionId.session_id)
+                      this.router.navigate(['/movies'])}
     )
-   
-    
+
+
   }
 
 

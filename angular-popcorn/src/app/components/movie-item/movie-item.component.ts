@@ -1,3 +1,4 @@
+import { AccountService } from './../../services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/interfaces/movies-popular.interface';
@@ -6,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogListsComponent } from '../dialogs/dialog-lists/dialog-lists.component';
 
 import { Router } from '@angular/router';
-import { DialogLoginComponent } from '../dialogs/dialog-fav/dialog-login.component';
+import { DialogLoginComponent } from '../dialogs/dialog-login/dialog-login.component';
 
 @Component({
   selector: 'app-movie-item',
@@ -16,33 +17,53 @@ import { DialogLoginComponent } from '../dialogs/dialog-fav/dialog-login.compone
 export class MovieItemComponent implements OnInit {
   @Input() movieInput!: Movie;
 
+  //Array de los ids de las peliculas favoritas
+  idsArray : number [] = [];
  //token !: string;
 
-  constructor(private authService : AuthService, public dialog: MatDialog, private router :Router) { }
+  constructor(private authService : AuthService,
+    private accService : AccountService,
+     public dialog: MatDialog,
+      private router :Router) { }
 
   ///DIALOGO------------
   openDialogList(): void {
     const dialogRef = this.dialog.open(DialogListsComponent, {
       width: '650px',
       height: '300px',
-      data: {name : this.movieInput.title},
+      data: {name : this.movieInput.title,
+              id : this.movieInput.id},
     });
 
-   
+
   }
 
-  openDialogFav(): void {
+  openDialogLogin(): void {
     const dialogRef = this.dialog.open(DialogLoginComponent, {
       width: '650px',
       height: '200px'
     });
 
-   
+
   }
 
   ///DIALOGO-------
 
   ngOnInit(): void {
+
+    if (this.authService.isLoggedIn()) {
+
+      this.accService.getFavoriteMovies().subscribe(
+        r => {
+              r.results.forEach( m => {
+               this.idsArray.push(m.id)
+          });}
+      )
+
+
+    }
+
+
 
 
   }
@@ -52,18 +73,33 @@ export class MovieItemComponent implements OnInit {
   }
 
 
+  addToList(){
+      if(this.authService.isLoggedIn())
+      this.openDialogList();
+      else
+      this.openDialogLogin();
+  }
 
-  addFavorite(){
+
+
+  addFavorite(movieId : number){
 
     if(this.authService.isLoggedIn()){
-      //TODO Guardar el favorito de la película actual.
-      alert(this.authService.getSessionId());
 
+      this.accService.addFavorite(movieId).subscribe()
+      window.location.reload();
     } else{
 
-      this.openDialogFav();
+      this.openDialogLogin();
 
     }
+
+  }
+
+  checkingFavMovie(idMovie : number) : boolean{
+
+
+    return this.idsArray.includes(idMovie)?true:false
 
   }
 

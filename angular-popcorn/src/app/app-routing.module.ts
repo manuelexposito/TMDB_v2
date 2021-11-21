@@ -4,8 +4,9 @@ import { MoviesPopularListComponent } from './components/movies-popular-list/mov
 import { SessionComponent } from './shared/session/session.component';
 
 const routes: Routes = [
-  {path: '', component: MoviesPopularListComponent},
-  {path: 'approved', component: SessionComponent}
+  {path: 'movies', component: MoviesPopularListComponent},
+  {path: 'approved', component: SessionComponent},
+  {path: '**', pathMatch: 'full', redirectTo:'/movies'}
 ];
 
 @NgModule({

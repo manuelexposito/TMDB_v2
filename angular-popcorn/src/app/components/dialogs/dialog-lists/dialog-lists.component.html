@@ -1,12 +1,72 @@
-<h1>{{data.name}}</h1>
 
-<div>
-    <mat-form-field class="example-full-width" appearance="fill" [(ngModel)]="nombreNuevaLista">
-        <mat-label>Nueva lista</mat-label>
-        <input matInput placeholder="Nueva lista" [value]=[nombreNuevaLista]>
+<div >
+<h1>Película: {{data.name}}</h1>
+<!-- TODO: ARREGLAR EL FORMULARIO PARA TERMINAR LA CREACION / AÑADIDO DE LISTA
+
+    <div *ngIf="listas.length > 0">
+      <mat-form-field appearance="fill">
+        <mat-label>Selecciona una lista</mat-label>
+        <mat-select [(ngModel)]="selectedList" >
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let list of listas" [value]="list">
+            {{list.name}}
+          </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width" appearance="fill" [(ngModel)]="nombreNuevaLista" >
+        <mat-label></mat-label>
+        <input matInput placeholder="Nueva lista" [value]="[nombreNuevaLista]">
     </mat-form-field>
-    <button mat-button (click)="createNewList(nombreNuevaLista)"> Enviar </button>
+    <button mat-button (click)="addMovieToList(selectedList)" mat-dialog-close> Enviar </button>-->
 
-</div>
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)"  *ngIf="listas.length > 0" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Añade la película a una de tus listas
+          </mat-panel-title>
 
-<p>dialog-lists works!</p>
+        </mat-expansion-panel-header>
+
+        <mat-form-field >
+          <mat-label>Selecciona una lista</mat-label>
+          <mat-select [(ngModel)]="selectedList" >
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let list of listas" [value]="list">
+              {{list.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button (click)="addMovieToList(selectedList); openSnackBar() " mat-dialog-close color="primary"> Añadir a esta lista </button>
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Crear nueva lista</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Crea una nueva lista y añade esta película
+          </mat-panel-title>
+
+        </mat-expansion-panel-header>
+
+        <mat-form-field class="example-full-width" appearance="fill" [(ngModel)]="nombreNuevaLista" >
+          <mat-label></mat-label>
+          <input matInput placeholder="Nueva lista" [value]="[nombreNuevaLista]">
+      </mat-form-field>
+      <button mat-raised-button (click)="addNewMovieToList(nombreNuevaLista)" mat-dialog-close color="primary"> Añadir a esta lista </button>
+        <mat-action-row>
+          <button mat-button color="warn"  *ngIf="listas.length > 0" (click)="prevStep()">Seleccionar lista existente</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+
+
+    </mat-accordion>
+
+
+
+  </div>

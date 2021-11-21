@@ -23,10 +23,12 @@ export class DialogLoginComponent implements OnInit {
   doLogin(){
 
     this.authService.getRequestToken().subscribe(
-      r =>                                     
+      r => {
+        this.authService.setLocalRequestToken(r.request_token);
         window.location.href=`https://www.themoviedb.org/authenticate/${r.request_token}?redirect_to=http://localhost:4200/approved`
-       // this.router.navigateByUrl(`https://www.themoviedb.org/authenticate/${r.request_token}`
+      }
     )
+
   }
 
 }
