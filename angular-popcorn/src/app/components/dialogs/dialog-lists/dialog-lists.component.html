@@ -34,7 +34,7 @@
           <mat-label>Selecciona una lista</mat-label>
           <mat-select [(ngModel)]="selectedList" >
             <mat-option>--</mat-option>
-            <mat-option *ngFor="let list of listas" [value]="list">
+            <mat-option *ngFor="let list of listas" [value]="list" >
               {{list.name}}
             </mat-option>
           </mat-select>

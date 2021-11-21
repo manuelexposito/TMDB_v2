@@ -30,7 +30,6 @@ export class MovieItemComponent implements OnInit {
   openDialogList(): void {
     const dialogRef = this.dialog.open(DialogListsComponent, {
       width: '650px',
-      height: '300px',
       data: {name : this.movieInput.title,
               id : this.movieInput.id},
     });

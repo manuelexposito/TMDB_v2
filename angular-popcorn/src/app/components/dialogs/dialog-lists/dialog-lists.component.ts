@@ -67,10 +67,10 @@ export class DialogListsComponent implements OnInit {
     this.step--;
   }
 
-  openSnackBar() {/*
+  openSnackBar() {
     //TODO que aparezca SOLO cuando la película ha sido añadida
     this._snackBar.openFromComponent(ListSuccessSnackbarComponent, {
       duration: 2000,
     });
-  */}
+  }
 }
