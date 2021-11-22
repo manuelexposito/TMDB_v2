@@ -22,7 +22,7 @@
     <button mat-button (click)="addMovieToList(selectedList)" mat-dialog-close> Enviar </button>-->
 
     <mat-accordion class="example-headers-align">
-      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)"  *ngIf="listas.length > 0" hideToggle>
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" (closed)="true" *ngIf="listas.length > 0" hideToggle >
         <mat-expansion-panel-header>
           <mat-panel-title>
             Añade la película a una de tus listas
@@ -45,7 +45,7 @@
         </mat-action-row>
       </mat-expansion-panel>
 
-      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" (closed)="true" hideToggle>
         <mat-expansion-panel-header>
           <mat-panel-title>
             Crea una nueva lista y añade esta película

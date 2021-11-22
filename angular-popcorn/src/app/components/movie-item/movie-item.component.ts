@@ -1,3 +1,4 @@
+import { MoviesFavListComponent } from './../../pages/movies-fav-list/movies-fav-list.component';
 import { AccountService } from './../../services/account.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, Input, OnInit } from '@angular/core';
@@ -59,7 +60,7 @@ export class MovieItemComponent implements OnInit {
         r => {
           this.movieService.getAccountStates(r.id).subscribe(
             resp => this.isFav = resp.favorite
-            
+
           )
         }
       )
@@ -82,14 +83,12 @@ export class MovieItemComponent implements OnInit {
 
   addFavorite(movieId: number) {
 
-   
-    
+
+
     if (this.authService.isLoggedIn()) {
 
       this.accService.addFavorite(movieId, !this.isFav).subscribe(resp => {
-      
       this.isFav = !this.isFav;
-     
       });
 
     } else {

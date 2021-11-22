@@ -1,3 +1,4 @@
+import { MoviesPopularListComponent } from './../../movies-popular-list/movies-popular-list.component';
 import { ListSuccessSnackbarComponent } from './../../snackbar/list-success-snackbar/list-success-snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
@@ -26,12 +27,16 @@ export class DialogListsComponent implements OnInit {
   listas!: List[];
   selectedList!: List;
 
+  step = 0;
+
+
   constructor(
     public dialogRef: MatDialogRef<MovieItemComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogList,
     private listService: ListsService,
     private authService: AuthService,
     private _snackBar: MatSnackBar
+
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +62,6 @@ export class DialogListsComponent implements OnInit {
     });
   }
 
-  step = 0;
 
   setStep(index: number) {
     this.step = index;

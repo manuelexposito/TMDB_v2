@@ -14,7 +14,7 @@ export class MoviesFavListComponent implements OnInit {
   constructor(private moviesService : MoviesService, private accService : AccountService) { }
 
   ngOnInit(): void {
-   
+
     this.getFavoriteMovies()
 
   }
@@ -24,7 +24,7 @@ export class MoviesFavListComponent implements OnInit {
     this.accService.getFavoriteMovies().subscribe(
 
       r =>  {this.favMovies = r.results}
-      
+
     )
 
   }
