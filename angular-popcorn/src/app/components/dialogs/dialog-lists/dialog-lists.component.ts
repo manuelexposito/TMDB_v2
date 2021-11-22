@@ -21,9 +21,11 @@ export interface DialogList {
 })
 export class DialogListsComponent implements OnInit {
   nombreNuevaLista!: string;
+  descNuevaLista!: string;
   nombresListas!: string[];
   listas!: List[];
   selectedList!: List;
+
   constructor(
     public dialogRef: MatDialogRef<MovieItemComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogList,
@@ -47,9 +49,11 @@ export class DialogListsComponent implements OnInit {
     }
   }
 
-  addNewMovieToList(listName: string) {
-    this.listService.createNewList(listName).subscribe((r) => {
-      this.listService.addMovieToList(this.data.id, r.list_id).subscribe();
+  addMovieToNewList(listName: string, listDesc : string) {
+
+    this.listService.createNewList(listName, listDesc).subscribe((r) => {
+
+      this.listService.addMovieToList(this.data.id, r.list_id).subscribe( r => {});
     });
   }
 

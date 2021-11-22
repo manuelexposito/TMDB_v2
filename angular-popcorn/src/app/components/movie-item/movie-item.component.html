@@ -15,7 +15,7 @@
     <mat-card-actions fxLayout="row" fxLayoutAlign="end end">
 
         <button  (click)="addFavorite(movieInput.id)" routerLinkActive="router-link-active"  mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-           <mat-icon *ngIf="!checkingFavMovie(movieInput.id)">favorite_border</mat-icon><mat-icon *ngIf="checkingFavMovie(movieInput.id)" color="accent">favorite</mat-icon>
+           <mat-icon *ngIf="!isFav">favorite_border</mat-icon><mat-icon *ngIf="isFav" color="accent">favorite</mat-icon>
         </button>
         <button (click)="addToList()" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
             <mat-icon>playlist_add</mat-icon>

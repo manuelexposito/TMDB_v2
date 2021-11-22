@@ -22,12 +22,15 @@ export class AccountService {
 
 
 
-  addFavorite(idMovie : number) : Observable<AddFavoriteResponse>{
+  addFavorite(idMovie : number, isFav : boolean) : Observable<AddFavoriteResponse>{
 
     let request= `${environment.apiBaseUrl}/account/{account_id}/favorite?api_key=${environment.apiKey}&session_id=${this.authService.getSessionId()}`
-    return this.http.post<AddFavoriteResponse>(request, {media_type : "movie", media_id : idMovie, favorite: true}, DEFAULT_HEADERS )
+    return this.http.post<AddFavoriteResponse>(request, {media_type : "movie", media_id : idMovie, favorite: isFav}, DEFAULT_HEADERS )
     //this.favoriteBodyData.media_id = `${idMovie}`
   }
+
+
+
 
   getFavoriteMovies() : Observable<FavoriteMoviesResponse>{
 

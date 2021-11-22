@@ -12,6 +12,9 @@ const DEFAULT_HEADERS = {
   })
 };
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,11 +23,11 @@ export class ListsService {
   constructor(private http : HttpClient, private authService : AuthService) { }
 
 
-  createNewList(nameList : string) : Observable<AddListResponse>{
+  createNewList(nameList : string, descriptionList : string) : Observable<AddListResponse>{
 
     let request = `${environment.apiBaseUrl}/list?api_key=${environment.apiKey}&session_id=${this.authService.getSessionId()}`
 
-   return this.http.post<AddListResponse>(request, {name : nameList}, DEFAULT_HEADERS)
+   return this.http.post<AddListResponse>(request, {name : nameList, description : descriptionList, language : "en" }, DEFAULT_HEADERS)
 
   }
 

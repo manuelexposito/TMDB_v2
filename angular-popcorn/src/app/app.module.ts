@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { SessionComponent } from './shared/session/session.component';
 import { DialogLoginComponent } from './components/dialogs/dialog-login/dialog-login.component';
 import { ListSuccessSnackbarComponent } from './components/snackbar/list-success-snackbar/list-success-snackbar.component';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
+import { MoviesFavListComponent } from './pages/movies-fav-list/movies-fav-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ListSuccessSnackbarComponent } from './components/snackbar/list-success
     DialogListsComponent,
     DialogLoginComponent,
     SessionComponent,
-    ListSuccessSnackbarComponent
+    ListSuccessSnackbarComponent,
+    ToolbarComponent,
+    MoviesFavListComponent
   ],
   imports: [
     BrowserModule,

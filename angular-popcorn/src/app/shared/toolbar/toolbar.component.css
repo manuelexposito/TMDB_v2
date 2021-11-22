@@ -1,0 +1,28 @@
+.side-menu{
+
+    padding: 20px;
+    text-align: center;
+    min-width: 200px;
+  }
+  
+  .toolbar{
+  
+    background-color: rgb(143, 25, 25);
+    color: white;
+  
+  }
+  
+  
+  
+  a{
+    text-decoration: none;
+    color: rgb(143, 25, 25);
+  }
+  
+  .example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }

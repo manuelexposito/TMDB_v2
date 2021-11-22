@@ -1,0 +1,43 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="over" class="side-menu">
+        <h3>¿Qué quieres ver?</h3>
+
+        <mat-list role="list">
+            <mat-list-item role="listitem" (click)="sidenav.toggle()"><a [routerLink]='["/movies"]'> Películas
+                    <mat-icon>movie</mat-icon>
+                </a></mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item role="listitem" (click)="sidenav.toggle()"><a [routerLink]='["/people-popular"]'> Actores
+                    <mat-icon>people</mat-icon>
+                </a></mat-list-item>
+        </mat-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar class="toolbar" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row">
+                <button (click)="sidenav.toggle()" mat-icon-button class="example-icon"
+                    aria-label="Example icon-button with menu icon">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span>Popcorn</span>
+            </div>
+
+            <button mat-button [matMenuTriggerFor]="menu">
+                <div fxLayout="row" fxLayoutAlign.gt-lg="center center">
+                    <mat-icon>account_circle</mat-icon>
+                    <h1>Mi perfil</h1>
+                </div>
+            </button>
+            <mat-menu #menu="matMenu">
+                <a mat-menu-item routerLink="/fav-movies-list">Lista de favoritos</a>
+                <!-- <button mat-menu-item>Item 2</button>-->
+            </mat-menu>
+
+        </mat-toolbar>
+
+
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

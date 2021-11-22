@@ -53,11 +53,16 @@
 
         </mat-expansion-panel-header>
 
-        <mat-form-field class="example-full-width" appearance="fill" [(ngModel)]="nombreNuevaLista" >
-          <mat-label></mat-label>
-          <input matInput placeholder="Nueva lista" [value]="[nombreNuevaLista]">
+        <mat-form-field  appearance="fill" [(ngModel)]="nombreNuevaLista" >
+          <mat-label>Título</mat-label>
+          <input matInput placeholder="Título" [value]="[nombreNuevaLista]">
       </mat-form-field>
-      <button mat-raised-button (click)="addNewMovieToList(nombreNuevaLista)" mat-dialog-close color="primary"> Añadir a esta lista </button>
+
+      <mat-form-field class="example-full-width" appearance="fill" [(ngModel)]="descNuevaLista" >
+        <mat-label>Descripción</mat-label>
+        <textarea matInput placeholder="Descripción" [value]="[descNuevaLista]"></textarea>
+    </mat-form-field>
+      <button mat-raised-button (click)="addMovieToNewList(nombreNuevaLista, descNuevaLista)" mat-dialog-close color="primary"> Añadir a esta lista </button>
         <mat-action-row>
           <button mat-button color="warn"  *ngIf="listas.length > 0" (click)="prevStep()">Seleccionar lista existente</button>
         </mat-action-row>
