@@ -27,7 +27,7 @@ export class ListsService {
 
     let request = `${environment.apiBaseUrl}/list?api_key=${environment.apiKey}&session_id=${this.authService.getSessionId()}`
 
-   return this.http.post<AddListResponse>(request, {name : nameList, description : descriptionList, language : "en" }, DEFAULT_HEADERS)
+   return this.http.post<AddListResponse>(request, {name : nameList, description : descriptionList}, DEFAULT_HEADERS)
 
   }
 

@@ -21,8 +21,8 @@ export interface DialogList {
   styleUrls: ['./dialog-lists.component.css'],
 })
 export class DialogListsComponent implements OnInit {
-  nombreNuevaLista!: string;
-  descNuevaLista!: string;
+  nombreNuevaLista: string = '';
+  descNuevaLista: string = '';
   nombresListas!: string[];
   listas!: List[];
   selectedList!: List;
@@ -60,6 +60,7 @@ export class DialogListsComponent implements OnInit {
 
       this.listService.addMovieToList(this.data.id, r.list_id).subscribe( r => {});
     });
+
   }
 
 
@@ -76,7 +77,7 @@ export class DialogListsComponent implements OnInit {
   }
 
   openSnackBar() {
-    //TODO que aparezca SOLO cuando la película ha sido añadida
+    //TODO que aparezca SOLO cuando la película ha sido añadida con éxito
     this._snackBar.openFromComponent(ListSuccessSnackbarComponent, {
       duration: 2000,
     });
