@@ -56,7 +56,7 @@ export class DialogListsComponent implements OnInit {
 
   addMovieToNewList(listName: string, listDesc : string) {
 
-    this.listService.createNewList(listName, listDesc).subscribe((r) => {
+    this.listService.createNewList(listName, listDesc).subscribe(r => {
 
       this.listService.addMovieToList(this.data.id, r.list_id).subscribe( r => {});
     });

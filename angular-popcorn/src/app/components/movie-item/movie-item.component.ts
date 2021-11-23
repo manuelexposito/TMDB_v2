@@ -12,6 +12,7 @@ import { DialogLoginComponent } from '../dialogs/dialog-login/dialog-login.compo
 import { MoviesPopularListComponent } from '../movies-popular-list/movies-popular-list.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { MoviesService } from 'src/app/services/movies.service';
+import { GenreService } from 'src/app/services/genre.service';
 
 @Component({
   selector: 'app-movie-item',
@@ -98,5 +99,6 @@ export class MovieItemComponent implements OnInit {
     }
 
   }
+
 
 }
